@@ -1,0 +1,8 @@
+add mod.ini
+add raw/boss/bosscommon.pac
+add raw/character/playercommon.pac
+add raw/enemy/enemycommon.pac
+add raw/enemy/umbrella01.pac
+add raw/script/script_common.pac
+add raw/script/script_w1r03.pac
+add raw/script/script_w1r04.pac
