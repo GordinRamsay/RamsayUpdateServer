@@ -1,6 +1,7 @@
 ## New Frontiers - Version 1.1
 - Fixed issue where the combat system didn't activate when fighting Giganto
 - Fixed an issue where the combat system broke when fighting Supreme (Sonic will no longer spam voice lines, meter will function as expected)
+- Slightly increased the damage on your basic combo
 - Lowered Bit Generator HP (these now die in 1 hit, as expected)
 - Lowered health on the Umbrella enemy
 - Lowered Soldier aggro
