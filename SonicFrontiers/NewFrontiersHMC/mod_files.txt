@@ -1,1 +1,10 @@
 add mod.ini
+add raw/script/script_common.pac
+add raw/script/script_w1r03.pac
+add raw/script/script_w1r04.pac
+add raw/script/script_w1r05.pac
+add raw/script/script_w2r01.pac
+add raw/script/script_w3r01.pac
+add raw/sound/voice_ranger_event_en.acb
+add raw/sound/voice_rangers_event_en.awb
+add raw/text/text_caption_en.pac
