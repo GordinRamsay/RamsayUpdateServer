@@ -1,3 +1,15 @@
+## Combat DX - Version 1.2
+- Renamed the mod based on feedback.
+- A companion mod specifically for Hedgehog May Cry can now be found on the GameBanana page for this mod.
+- Faster Elder Koco leveling incorporated.
+- Added extra Attack level scaling. You now gain more Phantom Rush based on your Attack level and your selected difficulty (at max attack, the multiplier is 1.49x/1.32x/1.24x on Easy/Normal/Hard). Defense scaling may be added in a future update, depending on feedback.
+- Spin Slash adjusted. The attack now completes much faster but consumes roughly the same amount of meter.
+- Corrected an oversight where a Double Multiplier bonus could reduce meter gain.
+- Fixed a bug where Cyclone Kick wouldn't consistently add to Skill Links.
+- Added a new UI pop-up when gaining an extra Quick Cyloop charge.
+- Tower HP in "The Best Defense" quest has been reduced to account for Sonic's lower damage (20 HP > 10 HP).
+- Pursuit Kick now stales faster (15/14/13/12/11 > 15/10/7/4/1).
+
 ## New Frontiers - Version 1.1
 - Fixed issue where the combat system didn't activate when fighting Giganto
 - Fixed an issue where the combat system broke when fighting Supreme (Sonic will no longer spam voice lines, meter will function as expected)

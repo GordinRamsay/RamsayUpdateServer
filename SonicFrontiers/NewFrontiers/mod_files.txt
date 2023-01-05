@@ -1,5 +1,7 @@
 add mod.ini
 add raw/boss/bosscommon.pac
+add raw/miniboss/darumacommon.pac
+add raw/text/text_objective_en.pac
 add raw/character/playercommon.pac
 add raw/enemy/enemycommon.pac
 add raw/enemy/umbrella01.pac
