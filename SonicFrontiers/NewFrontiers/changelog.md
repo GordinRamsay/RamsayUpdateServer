@@ -1,3 +1,7 @@
+##Combat DX - Version 1.2.1
+- Properly implemented the changes from V1.2 (forgot to update most of the .pacs last time)
+- Added a Taunt mechanic. By crouching in combat for a brief moment, Sonic will perform one of four, randomly selected Taunts. These add to your Style Score at the cost of your Phantom Rush meter.
+
 ## Combat DX - Version 1.2
 - Renamed the mod based on feedback.
 - A companion mod specifically for Hedgehog May Cry can now be found on the GameBanana page for this mod.
