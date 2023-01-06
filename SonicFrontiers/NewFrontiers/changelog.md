@@ -1,5 +1,8 @@
-##Combat DX - Version 1.2.1
-- Properly implemented the changes from V1.2 (forgot to update most of the .pacs last time)
+## Combat DX - Version 1.2.2
+- Fixed a bug with the Taunt mechanic that forced you out of combat.
+
+## Combat DX - Version 1.2.1
+- Properly implemented the changes from V1.2 (forgot to update most of the .pacs last time.)
 - Added a Taunt mechanic. By crouching in combat for a brief moment, Sonic will perform one of four, randomly selected Taunts. These add to your Style Score at the cost of your Phantom Rush meter.
 
 ## Combat DX - Version 1.2
