@@ -1,4 +1,5 @@
 add mod.ini
+add CombatDX.dll
 add raw/boss/bosscommon.pac
 add raw/miniboss/darumacommon.pac
 add raw/text/text_objective_en.pac
@@ -8,3 +9,7 @@ add raw/enemy/umbrella01.pac
 add raw/script/script_common.pac
 add raw/script/script_w1r03.pac
 add raw/script/script_w1r04.pac
+add raw/misc/gameparam.pac
+add raw/boss/giant01.pac
+add raw/boss/dragon01.pac
+add raw/boss/knight01.pac

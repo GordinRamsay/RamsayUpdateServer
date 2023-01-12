@@ -1,3 +1,32 @@
+## Combat DX - Version 1.3
+- Rewrote the code for Skill Links to be more manageable internally.
+- Reduced the unlock requirement for Cyclone Kick.
+- Rebalanced Super Sonic, Giganto and Knight.
+- Super Sonic no longer gains Phantom Rush on hit.
+- Super Sonic now regenerates Phantom Rush over time, based on difficulty, attack level and current Combo Rank.
+- Super Sonic will now gain Style multiplier instead of a Rush multiplier from Skill Links.
+- Getting hit as Super Sonic will now fully deplete the Phantom Rush gauge. On Normal and Hard, your Combo Rank will also be heavily reduced.
+- Super Sonic will now earn a minimum of 25 rings from a Ring Bonus Skill Link.
+- Rebalanced Super Sonic's Style requirements. Style Score is now earned faster but depletes faster.
+- Super Sonic now gains Style Score from Quick Cyloop. Consecutive Quick Cyloops grant more score.
+- Super Sonic now gains more Style Score from consecutive parries.
+- Attempted to fix Style decay during Titan cutscenes/QTEs. This is not 100% effective, but it should help a bit.
+- Reduced Rank notification spam during Super Sonic fights. There is now a 2 second window after changing Ranks before a new Rank can be granted.
+- Lowered the damage on a few of Super Sonic's attacks (thanks to KirbyKrew661 for providing a starting point).
+- Adjusted almost every move to inflict relevant Stun damage.
+- Giganto can now be stunned after inflicting sufficient damage, droppping him to his knees for a few seconds.
+- Decreased the Cyloop damage multiplier (2.5x > 2.0x)
+- On Hard Mode, manual Cyloop is now disabled against Titans. Quick Cyloop still functions.
+- Added a letterbox effect to Quick Cyloop cinematics during the Titan fights.
+- (Mostly) fixed the bug where Giganto was immune to Quick Cyloop. The move will occasionally fail if you activate it inside a boss or during the wrong animation, but these are issues with the move itself and unrelated to Combat DX.
+- Knight is less susceptible to Cyloop.
+- Increased Wyvern's HP (50,000 > 75,000.)
+- Increased the speed of Power Boost while chasing Wyvern on the red path so that it's actually faster than standard boosting (35 > 70.)
+- (Hopefully) tweaked the Item Collection minigame on Chaos to accommodate lower damage.
+- (Hopefully) fixed an issue where Super Sonic's Phantom Rush drain mechanic would activate too early.
+- Tweaked some pop-ups to reflect the new Super Sonic changes. The text has only been updated for English to keep file size low.
+- Slightly increased the maximum attack value from level ups (this is a base value that applies to every move in the game.)
+
 ## Combat DX - Version 1.2.2
 - Fixed a bug with the Taunt mechanic that forced you out of combat.
 
