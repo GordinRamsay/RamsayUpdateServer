@@ -1,3 +1,16 @@
+## Combat DX - Version 1.4
+- Greatly reworked the Supreme fight.
+- Added config options for post battle dialogue and the rank announcer.
+- Rebalanced the Soldier enemies on Ares.
+- Made the combat dummy challenges easier to complete.
+- Added a UI notification for Immediate bonuses (e.g. ring injections from a Skill Link)
+- Added a letterbox effect during Quick Cyloop for regular Sonic.
+- Slightly rebalanced Strider.
+- Taunts will now play in a fixed order.
+- Taunts will drain less Phantom Rush and grant slightly more Style Score.
+- Rewrote the code for in-combat notifications to be more manageable going forward.
+
+
 ## Combat DX - Version 1.3
 - Rewrote the code for Skill Links to be more manageable internally.
 - Reduced the unlock requirement for Cyclone Kick.
