@@ -1,3 +1,11 @@
+## Combat DX - Version 1.4.5
+- Added support for Update 1
+- **NOTE:** As tools as still being updated/fixed, there are a few temporary measures. Extreme Mode is not properly supported, Battle Rush is not supported, Sonic's abilities will not use their special cameras, and the nerfs to the Collect Item and Tower Battle quests are not implemented. This will be fixed once the RFL templates are updated.
+- Chaos Island birds can now be ridden once more. This was caused by the input for Taunt not checking whether the player was on the ground.
+- Minor filesystem and code reworks. Combat DX no longer needs to overwrite language-specific PACs and the Style code is slightly more logical.
+- **TODO:** Once tools are updated, Version 1.5 will be pushed featuring fixes for the platforming enemies not dying in 1 hit and other issues introduced with Update 1. Battle Rush support may take longer as it doesn't currently support scripts.
+
+
 ## Combat DX - Version 1.4
 - Greatly reworked the Supreme fight.
 - Added config options for post battle dialogue and the rank announcer.
