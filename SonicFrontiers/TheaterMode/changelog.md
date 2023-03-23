@@ -1,3 +1,6 @@
+## Theater Mode - Version 1.2
+- Added support for Update 1
+
 ## Theater Mode - Version 1.1
 - Added the animation viewer. This allows you to view (almost) all of Sonic's animations individually or play them all consecutively.
 - Added a minigame select. After crouching, start a parry to bring up the menu. Note that certain minigames cannot be completed due to a bug with Frontiers.
