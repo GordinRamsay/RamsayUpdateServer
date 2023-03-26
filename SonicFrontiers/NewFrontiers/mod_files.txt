@@ -124,3 +124,4 @@ add normal/raw/script/script_common.pac
 add NoPost/raw/script/script_common.pac
 add NoRank/raw/script/script_common.pac
 add NoSpeak/raw/script/script_common.pac
+add root/raw/gedit/w1r03_gedit.pac

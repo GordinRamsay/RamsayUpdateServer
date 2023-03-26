@@ -1,3 +1,10 @@
+## Combat DX - Version 1.4.7
+- Updated the PlayerCommon RFL. Attack cameras are back!
+- Removed the transition from Air Boost to Loop Kick, allowing regular Stomp to be used in combos. Loop Kick can still be activated from the After Air Boost state (delay your Stomp input slightly and you'll still get Loop Kick).
+- Removed the transition from Slide to Loop Kick.
+- Updated the Kronos GEDIT files to use level 10 Jellymen rather than Level 1. This makes platforming soldiers 1 Hit KO's once more.
+- **NOTE:** Battle Rush is still not supported at the moment. I'm investigating possible solutions, but it may be a while.
+
 ## Combat DX - Version 1.4.5
 - Added support for Update 1
 - **NOTE:** As tools as still being updated/fixed, there are a few temporary measures. Extreme Mode is not properly supported, Battle Rush is not supported, Sonic's abilities will not use their special cameras, and the nerfs to the Collect Item and Tower Battle quests are not implemented. This will be fixed once the RFL templates are updated.
