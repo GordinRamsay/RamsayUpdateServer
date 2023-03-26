@@ -1,3 +1,7 @@
+## Theater Mode - Version 1.2.5
+- Added an Advanced Settings menu, allowing for easier Photo Mode posing and menu navigation.
+- Updated the "Bridging The Gap" and "Mysterious Door" cutscenes to properly hide the bridge and lava flow respectively.
+
 ## Theater Mode - Version 1.2
 - Added support for Update 1
 
