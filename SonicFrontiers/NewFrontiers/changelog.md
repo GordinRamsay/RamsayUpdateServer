@@ -1,3 +1,10 @@
+## Combat DX - Version 1.5
+- Reworked the config system, reviving support for the playercommon merge tool. To configure Combat DX, open ComboConfig.lua inside the mod's folder.
+- Virtually every aspect of the mod can be configured now, and you can do so in real-time by editing that file (if you're currently in a fight, changes will be applied once you finish the battle). If you want to implement your own take on the combo system within your own mods, go right ahead (provided credit is given). Documentation is provided at the bottom of the file.
+- Removed the custom params on the Defender enemy.
+- **NOTE:** I'm holding off on any other major updates until Update 3 drops. If the new characters are able to partake in combat, I will give them their own combo systems. Meanwhile, I'll still do maintenance on Combat DX if any issues arise. Thank you for the support.
+The Hedgehog May Cry companion build will be updated sometime in the next couple days. I'll implement the same configuration system used here into that build, but it takes some time to set up.
+
 ## Combat DX - Version 1.4.7
 - Updated the PlayerCommon RFL. Attack cameras are back!
 - Removed the transition from Air Boost to Loop Kick, allowing regular Stomp to be used in combos. Loop Kick can still be activated from the After Air Boost state (delay your Stomp input slightly and you'll still get Loop Kick).
