@@ -1,3 +1,4 @@
 delete raw
 delete raw/script/script_common.pac
+delete raw/script
 add test/amongus/there.txt
