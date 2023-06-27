@@ -1,5 +1,6 @@
 add mod.ini
 add CombatDX.dll
+add ComboConfig.lua
 add raw/script/script_common.pac
 add raw/script/script_w1r03.pac
 add raw/script/script_w1r04.pac
