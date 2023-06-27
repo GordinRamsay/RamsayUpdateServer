@@ -1,3 +1,6 @@
+## Combat DX - Version 1.5.1
+- Fixed a missing configuration option. The Rank displays can now be properly toggled off as regular Sonic.
+
 ## Combat DX - Version 1.5
 - Reworked the config system, reviving support for the playercommon merge tool. To configure Combat DX, open ComboConfig.lua inside the mod's folder.
 - Virtually every aspect of the mod can be configured now, and you can do so in real-time by editing that file (if you're currently in a fight, changes will be applied once you finish the battle). If you want to implement your own take on the combo system within your own mods, go right ahead (provided credit is given). Documentation is provided at the bottom of the file.
