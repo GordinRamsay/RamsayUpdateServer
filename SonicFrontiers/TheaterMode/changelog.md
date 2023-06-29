@@ -1,3 +1,6 @@
+## Theater Mode - Version 1.2.7
+- Actually updated the DLL this time.
+
 ## Theater Mode - Version 1.2.6
 - Added support for Update 2.
 
