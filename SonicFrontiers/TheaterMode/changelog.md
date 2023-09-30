@@ -1,3 +1,8 @@
+## Theater Mode - Version 1.3.0
+- Added support for Update 3.
+- Enabled Theater Mode inputs at all times.
+- Enabled on-the-fly character swapping for all islands. NOTE: Due to how they work, if you use them outside of Another Story, they'll have their default skills and cannot gain exp. To open the Theater Mode menu as a new character, hold RT (to go into the Pre-Boost idle animation) after crouching.
+
 ## Theater Mode - Version 1.2.7
 - Actually updated the DLL this time.
 
