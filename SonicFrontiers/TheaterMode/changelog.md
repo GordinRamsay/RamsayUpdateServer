@@ -1,3 +1,7 @@
+## Theater Mode - Verssion 1.3.1
+- Fixed an oversight that could ruin save data.
+- Properly enabled Theater Mode everywhere during Another Story.
+
 ## Theater Mode - Version 1.3.0
 - Added support for Update 3.
 - Enabled Theater Mode inputs at all times.
