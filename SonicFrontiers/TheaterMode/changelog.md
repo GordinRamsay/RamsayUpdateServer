@@ -1,3 +1,6 @@
+## Theater Mode - Version 1.3.2
+- (Hopefully) the last patch needed. Tentatively fixed an issue where you could become unable to open the menu as other characters.
+
 ## Theater Mode - Verssion 1.3.1
 - Fixed an oversight that could ruin save data.
 - Properly enabled Theater Mode everywhere during Another Story.
