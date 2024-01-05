@@ -1,3 +1,20 @@
+## Combat DX - Version 2.0.0
+- Rewrote the entire thing. Combat DX is now an HMM code rather than Lua scripts.
+- The tutorial has been removed, though CDX will be fully active from the start of the game. The tutorial may be re-added later, it just wasn't practical to do in an HMM code.
+- There are bugs, and there's still some stuff that will be reimplemented later (like config options and post-battle banter).
+- Added basic support for Amy, Knuckles and Tails. They lack Aspects and Skill Links at the moment, but those will be added later.
+- Combat DX now works in Battle Rush. It won't work in the first few trials of Another Story, but it will work in Master King's trial.
+- Generally improved UI in the mod. You will now be notified when a Skill Link is active, you will be able to see which moves are currently in the Link, you will be notified when you level up a Link, and you will get detailed information about a Bonus when you attain one.
+- Changed Skill Link bonuses a bit. Notably, Cyloop will now grant an increase to your critical strike chance/damage instead of awarding Rings when used as the first move in a Link.
+- Implemented a basic Tension system. You now gain a chance to inflict critical strikes based on your current Combo count.
+- Implemented an Aspect system. As Sonic, hold the Left Stick (Light Dash input) then press A, B, Y or X to activate the aspect of Amy, Tails, Sonic or Knuckles respectively. Press the input again to disable all aspects. This can be done outside of battle.
+- Aspects are similar to style switching in Devil May Cry. They will change the properties of your moves, making your combat lean into a certain archetype, but you can swap between them at any time. Successfully parrying while an aspect is active will grant a (stacking) bonus that only resets upon taking damage or leaving combat.
+- Amy's aspect lowers gravity and generally makes your attacks launch enemies or stall them in the air. The Phantom Rush drain rate slightly increases, but successful parries raise your minimum damage.
+- Tails' aspect greatly reduces damage and greatly reduces the drain rate of Phantom Rush, making it easy to acquire and maintain. Successful parries grant rings and increase the damage of your critical strikes. This aspect halves the Style gained in combat.
+- Sonic's aspect greatly speeds up your attacks, moderately increases the Phantom Rush drain rate, and slightly reduces your damage dealt but ups the base critical strike damage from 3x to 3.25x. Successful parries grant +10% critical strike chance. This aspect halves the Style gained in combat.
+- Knuckles' aspect slightly increases gravity, moderately increases damage dealt, greatly increases the drain rate of Phantom Rush, and generally makes your attacks launch enemies away. Successful parries will increase your maximum damage.
+- The player is now vulnerable during taunts, but you can cancel them at any time.
+
 ## Combat DX - Version 1.5.1
 - Fixed a missing configuration option. The Rank displays can now be properly toggled off as regular Sonic.
 

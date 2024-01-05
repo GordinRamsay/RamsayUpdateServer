@@ -1,0 +1,62 @@
+{
+    "Groups":
+	[
+	    {
+			"Name": "Presentation",
+			"DisplayName": "Presentation - Normal",
+			"Elements":
+			[
+				{
+					"Name": "RankUI",
+					"DisplayName": "Combo Rank Banner",
+					"Type": "bool",
+					"DefaultValue": "True",
+					"Description": [ "Displays your current combo rank in the top-right corner of the screen." ]
+				},
+				{
+					"Name": "Letterboxing",
+					"DisplayName": "Use Letterboxing",
+					"Type": "bool",
+					"DefaultValue": "True",
+					"Description": [ "Plays a short letterbox effect when using Quick Cyloop." ]
+				},
+				{
+					"Name": "Announcer",
+					"DisplayName": "Use Announcer",
+					"Type": "bool",
+					"DefaultValue": "True",
+					"Description": [ "Plays a special voiceline the first time you reach a new Combo Rank in a fight." ]
+				}
+			]
+        },
+		{
+			"Name": "Presentation_Super",
+			"DisplayName": "Presentation - Super",
+			"Elements":
+			[
+				{
+					"Name": "SuperRankUI",
+					"DisplayName": "Combo Rank Banner",
+					"Type": "bool",
+					"DefaultValue": "True",
+					"Description": [ "Displays your current combo rank in the top-right corner of the screen while using Super Sonic." ]
+				},
+				{
+					"Name": "SuperLetterboxing",
+					"DisplayName": "Use Letterboxing",
+					"Type": "bool",
+					"DefaultValue": "True",
+					"Description": [ "Plays a short letterbox effect when using Quick Cyloop as Super Sonic." ]
+				},
+				{
+					"Name": "SuperAnnouncer",
+					"DisplayName": "Use Announcer",
+					"Type": "bool",
+					"DefaultValue": "True",
+					"Description": [ "Plays a special voiceline the first time you reach a new Combo Rank in a fight as Super Sonic." ]
+				}
+			]
+        }
+    ],
+    "IniFile": "config.ini"
+}
