@@ -1,3 +1,6 @@
+## Combat DX - Version 2.0.2
+- Fixed the bug where Super Sonic wouldn't work properly in the Giganto fight. This is from an issue in the base game where Sonic Team accidentally put in a call that completely shuts down the Lua sequence once you start the fight. Whoops.
+
 ## Combat DX - Version 2.0.1
 - Fixed various crashing issues. You can now start a fresh save file and play Arcade Mode.
 - Hopefully fixed a hardlock when dying as Super Sonic.

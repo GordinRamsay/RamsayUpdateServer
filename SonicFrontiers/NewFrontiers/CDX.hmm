@@ -2341,6 +2341,22 @@ var HitstopParam = Reflection.GetDataInfo<GameHitStopParameter.Root>("hitstop");
 	}
 }
 	//Utilities.IsRushActive(); 
+Patch "Fix Giganto Scripting"
+#lib "Lua"
+{
+	Lua.CreateLineHook
+    (
+        """
+            NextSequence(40) -- we're replacing code here and our query removes this from a previous function
+
+            FadeIn(0)
+        """,
+        
+        "w1r03_sequence35.lua", "NextSequence(40)\n  Exit()",
+        
+        HookBehavior.Replace
+    );
+}
 Library "GameHitStopParameter"
 {
     #load "System.Numerics.dll"
