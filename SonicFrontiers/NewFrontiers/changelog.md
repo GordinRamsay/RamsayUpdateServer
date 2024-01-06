@@ -1,3 +1,13 @@
+## Combat DX - Version 2.0.1
+- Fixed various crashing issues. You can now start a fresh save file and play Arcade Mode.
+- Hopefully fixed a hardlock when dying as Super Sonic.
+- Tightened combat detection. You should no longer lose a combo just from carrying an enemy outside of its territory.
+- Tightened character swap detection. Combat DX should now always detect when you've swapped to Super Sonic.
+- (Hopefully) fixed an issue where characters would play the incorrect voices.
+- Tweaked the Tension system for Super Sonic. The higher your combo, the more Critical Hit damage you'll deal.
+- Tweaked the Phantom Rush gain formula for Super Sonic. Fights should be a bit more bearable at low levels.
+- (Hopefully) made the tutorial slightly more tolerable. You should now receive 10,000 skill points and Phantom Rush before the first combat encounter.
+
 ## Combat DX - Version 2.0.0
 - Rewrote the entire thing. Combat DX is now an HMM code rather than Lua scripts.
 - The tutorial has been removed, though CDX will be fully active from the start of the game. The tutorial may be re-added later, it just wasn't practical to do in an HMM code.

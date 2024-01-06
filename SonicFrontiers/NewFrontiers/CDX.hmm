@@ -131,7 +131,7 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 	    {"AVOID_RIGHT_AIR", "AirDodge"},
 	    {"PARRY_MISS", "MissedParry"}, //MissedParry
 	    {"PARRY_MISS_AIR", "MissedParry"},
-		{"STAND", "COMBAT_EXIT"}, //Player is 100% not in combat.
+		//{"STAND", "COMBAT_EXIT"}, //Player is 100% not in combat. Disabled Stand because it can proc in the air.
 		{"RUNNING", "COMBAT_EXIT"},
 		{"DEAD", "COMBAT_EXIT"},
 		{"DEAD_LOOP", "COMBAT_EXIT"}
@@ -695,7 +695,10 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 		}
 		public static void SetRushDrain(float rate, float rateAccele)
 		{
+			hasChangedRush = true;
 			var SonicParams = Reflection.GetDataInfo<SonicParameters.Root>("player_common");
+			if (SonicParams == null)
+				return;
 			RFL_SET_PARAM(SonicParams, common.commonPackage.acceleMode.declineSpeed, rate);
 			RFL_SET_PARAM(SonicParams, common.commonPackage.acceleMode.declineSpeedAccele, rateAccele);
 		}
@@ -703,8 +706,12 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 		{
 			var SonicParams = Reflection.GetDataInfo<SonicParameters.Root>("player_common");
 			int comboCount = (int)Utilities.GetBattleInformation("Combo");
-			float tensionCrit = (comboCount/7.5f)/100;
-			RFL_SET_PARAM(SonicParams, common.commonPackage.attack.common.criticalRate, Math.Min(0.99f, tensionCrit + aspectBonusCrit + Bonuses.bonusCritRate));
+			float tensionCrit = (comboCount/7.5f)/100f;
+			float tensionCritDamage = comboCount/100f;
+			if (playerName == "Super")
+				RFL_SET_PARAM(SonicParams, common.commonPackage.attack.common.criticalDamageRate, Math.Min(12f, baseCritDamage + tensionCritDamage + aspectBonusCritDamage + Bonuses.bonusCritDamage));
+			else
+				RFL_SET_PARAM(SonicParams, common.commonPackage.attack.common.criticalRate, Math.Min(0.99f, tensionCrit + aspectBonusCrit + Bonuses.bonusCritRate));
 		}
 		public static void SetCritByBonus()
 		{
@@ -1698,6 +1705,7 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 			var pBlackboardItem = BlackboardItem.Get();
 			if (pBlackboardItem == null)
 			{
+				Console.WriteLine("Check was null, failsafe and return");
 				failSafeInitTimer += 0.75f;
 				return;
 			}
@@ -1918,7 +1926,8 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 	{
 		if (charType == null)
 			return;
-		else if (BlackboardStatus.IsSuper())
+		lastPlayerName = playerName
+		if (BlackboardStatus.IsSuper())
 			playerName = "Super";
 		else if (charType == Player.PlayerType.Sonic)
 			playerName = "Sonic";
@@ -1928,6 +1937,11 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 			playerName = "Knuckles";
 		else if (charType == Player.PlayerType.Tails)
 			playerName = "Tails";
+		if (lastPlayerName != playerName)
+		{
+			Console.WriteLine("FORCE INIT VIA NAME CHANGE!!!");
+			CharacterList[playerName].InitCharacter();
+		}
 	};
 	public static void incrementTaunt(dynamic curChar)
 	{
@@ -1960,8 +1974,10 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 	
 	Random qteRNG = new Random();
 	static string playerName = "Sonic";
+	static string lastPlayerName = "Sonic";
 	static string currentAnim = "STAND"; //Forces an init
 	static string lastAnim = "DEFAULT"; //Not particularly important but may as well give it a value.
+	static bool hasChangedRush = false; //Hacky way to solve Cyberspace/Arcade crashes
 	static bool isStateDiscarded = false;
 	static bool hasInit = true;
 	static bool isRankUI = false;
@@ -1969,6 +1985,8 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 	static bool hasLoadedLevels = false;
 	static bool isRush = false;
 	static bool isBlackscreenProtection = false;
+	static bool combatDisableReturn = false; //Prevents the combat system from exiting when an enemy leaves its territory mid-combo.
+	static bool hasInitForTutorial = false; //When loading a fresh save, do some cool stuff.
 	static float timer;
 	static float timerStyle;
 	static float holdTimer;
@@ -1987,7 +2005,7 @@ The mod's pretty much functional, but there's still some stuff I need to add lat
 	{ "Smash", "ChargeAttack", "CrossSlash", "Cyloop", "SonicBoom", "Crasher", "AutoCombo", "HomingShot", "SpinSlash", "RecoverySmash", "AirTrick", "Stomping", "LoopKick", "QuickCyloop" };
 	public static List<string> tPresents = new()
 	{
-		"Accel", "Accele", "AccelMode", "AcceleMode"
+		"AcceleLevel", "QuickCyloop"
 	};
 	public static void ReleaseSkill()
 	{
@@ -2011,13 +2029,12 @@ var HitstopParam = Reflection.GetDataInfo<GameHitStopParameter.Root>("hitstop");
 	}
 	if (IS_WORLD_FLAG(IsCyberSpace))
 	{
-		Console.WriteLine("Cyber Bozo");
 		return;
 	}
 	if (!hasLoadedLevels) //Not sure if this is the best solution, but I don't want to constantly make these function calls.
 	{
 		hasLoadedLevels = true;
-		Lua.Call("LoadLevel", "sound");
+		//Lua.Call("LoadLevel", "sound");
 		Lua.Call("LoadLevel", "effectcommon_friends");
 		Lua.Call("LoadLevel", "amyP");
 		Lua.Call("LoadLevel", "tailsP");
@@ -2038,28 +2055,32 @@ var HitstopParam = Reflection.GetDataInfo<GameHitStopParameter.Root>("hitstop");
 			curChar.InitCharacter();
 		}
 	}
-	if (!IS_WORLD_FLAG(IsBattle) || currentAnim == "DEAD" || currentAnim == "DEAD_LOOP")
+	if (!IS_WORLD_FLAG(IsBattle) || IS_WORLD_FLAG(IsDead))
 	{
 		string exitReaction = "DEFAULT";
-		currentAnim = "STAND"; //Redundant? Probably. But Init got screwed up and it's too close to release. This fixes it. By forcing it. Oh well.
-		if (ReactionIndex.ContainsKey(currentAnim))
-			exitReaction = ReactionIndex[currentAnim];
-		else if (Player.State.GetCurrentStateID<Sonic.StateID>() == Sonic.StateID.StateDead)
-			exitReaction = "COMBAT_EXIT";
-		else
+		string checkAnim = (Lua.Call<string>("GetCurrentAnimationName") != null) ? Lua.Call<string>("GetCurrentAnimationName") : "STAND";
+		if (ReactionIndex.ContainsKey(checkAnim))
 		{
-			Console.WriteLine(IS_WORLD_FLAG(IsBattle) + " REACTION: " + exitReaction);
+			exitReaction = ReactionIndex[checkAnim];
+			combatDisableReturn = false;
 		}
-		currentAnim = "STAND"; //Gotta reset or we get trapped here.
+		else if (IS_WORLD_FLAG(IsDead))
+		{
+			exitReaction = "COMBAT_EXIT";
+			combatDisableReturn = false;
+		}
 		if (hasInit && exitReaction == "COMBAT_EXIT")
 		{
 			Console.WriteLine("INIT CALLED!");
-			//curChar.hasInitChar = false;
 			foreach (var Val in CharacterList.Values)
 			{
 				Val.hasInitChar = false;
 			}
-			Aspects.SetRushDrain(7f, 14f);
+			if (hasChangedRush)
+			{
+				Aspects.SetRushDrain(7f, 14f);
+				hasChangedRush = false;
+			}
 			SkillLink.ComboBonus.Clear();
 			SkillLink.ChainLevel = 1;
 			SkillLink.ChainActive = false;
@@ -2083,38 +2104,38 @@ var HitstopParam = Reflection.GetDataInfo<GameHitStopParameter.Root>("hitstop");
 			supremeQTETimer_CheckLaser = 0.0f;
 			supremeQTETimer_PlayQTE = 0.0f;
 			supremeQTEChance = 1;
-			curChar.ResetByDamage();
+			if (Aspects.aspectBonusCrit != 0 || Aspects.aspectBonusCritDamage != 0) //Another hacky fix for Cyberspace.
+				curChar.ResetByDamage();
+			hasInit = false;
 		}
-		hasInit = false;
-		return;
+		if (!combatDisableReturn)
+			return;
 	} else
 	{
+		combatDisableReturn = true;
 		hasInit = true;
-		/*if (!hasInit)
+	}
+	if (Lua.Call<int>("GetValue", "Tutorial", 0) <= 3 && Lua.Call<int>("GetValue", "Tutorial", 0) > 1)
+	{
+		Lua.Call("SetHUDEnabled", "MainMenu", true);
+		Lua.Call("SetHUDEnabled", "MapMenu", true);
+		Lua.Call("SetPlayerAbilityEnabled", "ComboAttack", true);
+		Lua.Call("SetPlayerAbilityEnabled", "Parry", true);
+		Lua.Call("SetPlayerAbilityEnabled", "Lockon", true);
+		if (!hasInitForTutorial)
 		{
-			Console.WriteLine("INIT CALLED!");
-			hasInit = true;
-			SkillLink.ComboBonus.Clear();
-			Scoring.InitVars();
-			isStateDiscarded = false;
-			Player.State.Restore(discardedState);
-			if (uiTimer > 0.0f)
-				Utilities.UIToggle("GuidUI", "reset");
-			if (isRankUI)
+			bool setupStartingBonus = false;
+			if (Lua.Call<int>("GetValue", "Tutorial", 0) <= 3 && !setupStartingBonus)
 			{
-				isRankUI = false;
-				Utilities.UIToggle("QuestTarget", "reset");
+				if (Lua.Call<int>("GetPlayerItemInfo", "ExpPoint") <= 130)
+					Lua.Call("PlayerGetItem", "ExpPoint", 10000);
+				Lua.Call("ReleasePresentSkill", "AcceleLevel");
+				hasInitForTutorial = true;
+				setupStartingBonus = true;
 			}
-			if (letterBoxTimer > 0.0f)
-				Utilities.UIToggle("LetterBox", "reset");
-			timer = 0.0f;
-			timerStyle = 0.0f;
-			holdTimer = 0.0f;
-			stateTimer = 0.0f;
-			tauntTimer = 0.0f;
-			uiTimer = 0.0f;
-			letterBoxTimer = 0.0f;
-		}*/
+			else if (Lua.Call<int>("GetValue", "Tutorial", 0) > 3)
+				hasInitForTutorial = true;
+		}
 	}
 	if (playerName == "Super")
 	{
@@ -2265,7 +2286,7 @@ var HitstopParam = Reflection.GetDataInfo<GameHitStopParameter.Root>("hitstop");
 			Bonuses.isPause = false;
 			Bonuses.pauseVal = 0f;
 			float incVal = 1f + Utilities.ToDecimal(Lua.Call<int>("GetPowerLevel")/superRushScaling, 2);
-			float upVal = Utilities.GetBattleInformation("PhantomRush") + ((incVal * Math.Max(1, (Scoring.comboRank/2)))/50f) * Scoring.rushMultiplier);
+			float upVal = Utilities.GetBattleInformation("PhantomRush") + ((incVal * Math.Max(1, ((Scoring.comboRank/2) * 1.5f)))/45f) * Scoring.rushMultiplier);
 			//Console.WriteLine("UPVAL: " + upVal);
 			Lua.Call("SetPhantomRushGauge", upVal);
 		} 
